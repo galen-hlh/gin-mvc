@@ -1,8 +1,8 @@
 package service
 
 import (
-	"t-gin/models"
-	"t-gin/modules/v1/requests/users"
+	"gin-mvc/models"
+	"gin-mvc/modules/v1/requests/users"
 )
 
 type UsersService struct {

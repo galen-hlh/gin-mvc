@@ -1,10 +1,10 @@
 package main
 
 import (
+	"gin-mvc/routes"
+	_ "gin-mvc/routes/v1"
+	_ "gin-mvc/routes/v2"
 	"net/http"
-	"t-gin/routes"
-	_ "t-gin/routes/v1"
-	_ "t-gin/routes/v2"
 	"time"
 )
 

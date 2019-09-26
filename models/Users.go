@@ -2,8 +2,8 @@ package models
 
 import (
 	"fmt"
+	"gin-mvc/utils/mysql"
 	"github.com/jinzhu/gorm"
-	"t-gin/utils/mysql"
 )
 
 type Users struct {

@@ -1,10 +1,10 @@
 package users
 
 import (
+	"gin-mvc/modules/v1/requests/users"
+	"gin-mvc/modules/v1/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"t-gin/modules/v1/requests/users"
-	"t-gin/modules/v1/service"
 )
 
 func List(c *gin.Context) {

@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"t-gin/modules/v1/controllers/users"
-	"t-gin/routes"
+	"gin-mvc/modules/v1/controllers/users"
+	"gin-mvc/routes"
 )
 
 func init() {
