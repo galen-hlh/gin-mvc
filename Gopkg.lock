@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:f7a60a9a34d95c74663ac464efad61c7162c9ebb1ecbf43d7ebb5e0968466213"
+  name = "github.com/bwmarrin/snowflake"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "cdbb8ee2794f0fb54567c1be4428746ad453aeb5"
+  version = "v0.3.0"
+
+[[projects]]
   digest = "1:a4b5a6b32f33323c7850fae4ec085a0fbac3be93c057b6b8cef5bcabe24645ac"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
@@ -129,7 +137,9 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/bwmarrin/snowflake",
     "github.com/gin-gonic/gin",
+    "github.com/gin-gonic/gin/binding",
     "github.com/go-sql-driver/mysql",
     "github.com/jinzhu/gorm",
     "gopkg.in/go-playground/validator.v8",

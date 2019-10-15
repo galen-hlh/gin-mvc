@@ -36,3 +36,7 @@
 [[constraint]]
   name = "github.com/jinzhu/gorm"
   version = "1.9.10"
+
+[[constraint]]
+  name = "github.com/bwmarrin/snowflake"
+  version = "0.3.0"
