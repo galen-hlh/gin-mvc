@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"gin-mvc/modules/v1/controllers/users"
-	"gin-mvc/routes"
+	"go-restful-api/modules/v1/controllers/users"
+	"go-restful-api/routes"
 )
 
 func init() {

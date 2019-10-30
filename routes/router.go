@@ -2,10 +2,10 @@ package routes
 
 import (
 	"fmt"
-	"gin-mvc/middleware"
-	"gin-mvc/modules/v1/controllers/site"
-	_ "gin-mvc/validate"
 	"github.com/gin-gonic/gin"
+	"go-restful-api/middleware"
+	"go-restful-api/modules/v1/controllers/site"
+	_ "go-restful-api/validate"
 )
 
 var Router *gin.Engine

@@ -1,9 +1,9 @@
 package users
 
 import (
-	"gin-mvc/modules/v1/requests/users"
-	"gin-mvc/modules/v1/service"
 	"github.com/gin-gonic/gin"
+	"go-restful-api/modules/v1/requests/users"
+	"go-restful-api/modules/v1/service"
 	"net/http"
 )
 

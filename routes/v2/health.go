@@ -1,8 +1,8 @@
 package v2
 
 import (
-	"gin-mvc/routes"
 	"github.com/gin-gonic/gin"
+	"go-restful-api/routes"
 )
 
 func init() {

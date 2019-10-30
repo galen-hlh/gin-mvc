@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gin-mvc/routes"
-	_ "gin-mvc/routes/v1"
-	_ "gin-mvc/routes/v2"
+	"go-restful-api/routes"
+	_ "go-restful-api/routes/v1"
+	_ "go-restful-api/routes/v2"
 	"net/http"
 	"time"
 )

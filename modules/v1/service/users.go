@@ -1,8 +1,8 @@
 package service
 
 import (
-	"gin-mvc/models"
-	"gin-mvc/modules/v1/requests/users"
+	"go-restful-api/models"
+	"go-restful-api/modules/v1/requests/users"
 )
 
 type UsersService struct {
