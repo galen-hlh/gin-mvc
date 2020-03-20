@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/DeanThompson/ginpprof"
 	"go-restful-api/routes"
 	_ "go-restful-api/routes/v1"
 	_ "go-restful-api/routes/v2"
@@ -10,7 +11,7 @@ import (
 
 func main() {
 	router := routes.Router
-
+	ginpprof.Wrapper(router)
 	s := &http.Server{
 		Addr:           ":8088",
 		Handler:        router,
