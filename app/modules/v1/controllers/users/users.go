@@ -2,8 +2,8 @@ package users
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-restful-api/modules/v1/requests/users"
-	"go-restful-api/modules/v1/service"
+	"go-restful-api/app/modules/v1/rules/users"
+	"go-restful-api/app/modules/v1/service"
 	"net/http"
 )
 

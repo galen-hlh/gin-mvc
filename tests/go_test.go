@@ -1,12 +1,63 @@
 package tests
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/bwmarrin/snowflake"
+	"reflect"
 	"runtime"
 	"sync"
 	"testing"
+	"time"
 )
+
+func TestStructToMapViaJson(t *testing.T) {
+	type HttpResponse struct {
+		Code  int32                  `json:"code"`
+		Msg   string                 `json:"msg"`
+		Data  map[string]interface{} `json:"data"`
+		Trace []string               `json:"trace"`
+	}
+	t1 := time.Now()
+
+	m := make(map[string]interface{})
+	response := &HttpResponse{
+		Code:  100,
+		Msg:   "not",
+		Data:  nil,
+		Trace: []string{"1", "2", "3"},
+	}
+	j, _ := json.Marshal(response)
+	_ = json.Unmarshal(j, &m)
+
+	fmt.Println(m)
+	fmt.Printf("duration:%d", time.Now().Sub(t1))
+}
+
+//struct转MAP 通过反射
+func TestStructToMapViaReflect(t *testing.T) {
+	type HttpResponse struct {
+		Code  int32                  `json:"code"`
+		Msg   string                 `json:"msg"`
+		Data  map[string]interface{} `json:"data"`
+		Trace []string               `json:"trace"`
+	}
+	t1 := time.Now()
+
+	m := make(map[string]interface{})
+	response := &HttpResponse{
+		Code:  100,
+		Msg:   "not",
+		Data:  nil,
+		Trace: []string{"1", "2", "3"},
+	}
+	elem := reflect.ValueOf(&response).Elem()
+	relType := elem.Type()
+	for i := 0; i < relType.NumField(); i++ {
+		m[relType.Field(i).Name] = elem.Field(i).Interface()
+	}
+	fmt.Println(m)
+	fmt.Printf("duration:%d", time.Now().Sub(t1))
+}
 
 // 通过位运算交换两个变量的值
 func TestExchangePosition(t *testing.T) {
@@ -32,38 +83,6 @@ func TestPanic(t *testing.T) {
 	}()
 
 	panic("i am error")
-}
-
-// 雪花
-func TestSnowFlake(t *testing.T) {
-	// Create a new Node with a Node number of 1
-	node, err := snowflake.NewNode(1)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	// Generate a snowflake ID.
-	id := node.Generate()
-
-	// Print out the ID in a few different ways.
-	fmt.Printf("Int64  ID: %d\n", id)
-	fmt.Printf("String ID: %s\n", id)
-	fmt.Printf("Base2  ID: %s\n", id.Base2())
-	fmt.Printf("Base64 ID: %s\n", id.Base64())
-
-	// Print out the ID's timestamp
-	fmt.Printf("ID Time  : %d\n", id.Time())
-
-	// Print out the ID's node number
-	fmt.Printf("ID Node  : %d\n", id.Node())
-
-	// Print out the ID's sequence number
-	fmt.Printf("ID Step  : %d\n", id.Step())
-
-	// Generate and print, all in one.
-	fmt.Printf("ID       : %d\n", node.Generate().Int64())
-
 }
 
 // 多线程顺序打印1-100

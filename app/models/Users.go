@@ -3,7 +3,7 @@ package models
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"go-restful-api/utils/mysql"
+	"go-restful-api/app/compoments/mysql"
 )
 
 type Users struct {

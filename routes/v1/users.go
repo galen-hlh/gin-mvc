@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"go-restful-api/modules/v1/controllers/users"
+	"go-restful-api/app/modules/v1/controllers/users"
 	"go-restful-api/routes"
 )
 

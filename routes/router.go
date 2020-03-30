@@ -3,9 +3,9 @@ package routes
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"go-restful-api/middleware"
-	"go-restful-api/modules/v1/controllers/site"
-	_ "go-restful-api/validate"
+	"go-restful-api/app/middleware"
+	"go-restful-api/app/modules/v1/controllers/site"
+	_ "go-restful-api/app/validate"
 )
 
 var Router *gin.Engine
@@ -31,8 +31,9 @@ func init() {
 		)
 	}))
 
-	Router.Use(middleware.Recovery())       // 异常处理中间件
-	Router.NoRoute(middleware.PageNotFound) // 404 页面处理
+	Router.Use(middleware.HandleErrors())       // 异常处理中间件
+	Router.NoRoute(middleware.HandleNotFound)   // 404 页面处理
+	Router.NoMethod(middleware.HandleNotMethod) // 405 页面处理
 
 	Router.GET("/", site.Index)
 	RouterGroupV1 = Router.Group("/v1")
