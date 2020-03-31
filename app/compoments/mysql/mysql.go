@@ -1,27 +1,30 @@
 package mysql
 
 import (
+	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
 )
 
-func GetDb() *gorm.DB {
+var M *sql.DB
 
-	// 配置
-	MyUser := "root"
-	Password := "123456"
-	Host := "127.0.0.1"
-	Port := 3306
-	Db := "yii2"
+type DbConfig struct {
+	Addr         string
+	Username     string
+	Password     string
+	Name         string
+	MaxConnNum   int
+	MaxIdleConns int
+}
 
-	connArgs := fmt.Sprintf("%s:%s@(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local", MyUser, Password, Host, Port, Db)
-	fmt.Println(connArgs)
-	db, err := gorm.Open("mysql", connArgs)
-
+func InitDB(cfg *DbConfig) error {
+	connArgs := fmt.Sprintf("%s:%s@(%s)/%s?charset=utf8&parseTime=True&loc=Local", cfg.Username, cfg.Password, cfg.Addr, cfg.Name)
+	M, err := sql.Open("mysql", connArgs)
 	if err != nil {
-		panic(err)
+		return err
 	}
+	M.SetMaxOpenConns(cfg.MaxConnNum)
+	M.SetMaxIdleConns(cfg.MaxIdleConns)
 
-	return db
+	return nil
 }

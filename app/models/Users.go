@@ -1,9 +1,7 @@
 package models
 
 import (
-	"fmt"
 	"github.com/jinzhu/gorm"
-	"go-restful-api/app/compoments/mysql"
 )
 
 type Users struct {
@@ -25,14 +23,14 @@ func (u *Users) BeforeCreate(scope *gorm.Scope) error {
 }
 
 func (u *Users) Add(nickName string, phone string, account string, password string) {
-	db := mysql.GetDb()
-
-	a := db.Debug().Create(&Users{
-		Nickname: nickName,
-		Phone:    phone,
-		Account:  account,
-		Password: password,
-	})
-
-	fmt.Println(a)
+	//db := mysql.GetDb()
+	//
+	//a := db.Debug().Create(&Users{
+	//	Nickname: nickName,
+	//	Phone:    phone,
+	//	Account:  account,
+	//	Password: password,
+	//})
+	//
+	//fmt.Println(a)
 }
